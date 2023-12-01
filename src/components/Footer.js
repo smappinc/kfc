@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+// Footer Component
 const Footer = () => {
   return (
     <div className=" w-full h-10 md:h-24 p-4 lg:px-20 xl:px-40 flex items-center justify-between font-semibold mt-auto border-t" style={{ background: "black", color: "white" }}>

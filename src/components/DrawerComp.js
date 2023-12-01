@@ -1,3 +1,8 @@
+/**
+ * This component is used for smaller devices, specifically mobile devices and
+ * only shows on those devices
+ */
+
 import { Drawer, Badge, IconButton, Button, List, ListItemButton, ListItemIcon, ListItemText } from '@mui/material'
 import React, { useState } from 'react'
 import MenuIcon from '@mui/icons-material/Menu';
@@ -10,7 +15,7 @@ const DrawerComp = () => {
     const { cart } = useMyContext();
     const [open, setOpen] = useState(false);
 
-    // Auth
+    // Auth to handle when a user is authenticated or not
     const { isAuthenticated, logout } = useAuth0();
 
     const handleItemClick = (path) => {
@@ -19,6 +24,7 @@ const DrawerComp = () => {
 
     return (
         <>
+            {/* Drawer from MUI */}
             <Drawer anchor='bottom' open={open} onClose={() => setOpen(false)} >
 
                 <List>
@@ -48,6 +54,7 @@ const DrawerComp = () => {
                         </ListItemButton>
                     </Link>
 
+                    {/* Check if user is authenticated and show Logout, else show Login */}
                     {isAuthenticated ? <Button color='inherit' onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>Logout</Button>
                         :
                         <Link to={'/login'} style={{ textDecoration: 'none' }}>

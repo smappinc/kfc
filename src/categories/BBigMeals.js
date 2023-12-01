@@ -10,7 +10,6 @@ const BBigMeals = () => {
 
     // cart context
     const { cart, setCart } = useMyContext();
-
     function addToCart(item) {
 
         // Check if the item is already in the cart
@@ -26,6 +25,9 @@ const BBigMeals = () => {
             // If the item is not in the cart, add it with quantity 1
             setCart([...cart, { ...item, quantity: 1 }]);
         }
+
+        // Show alert
+        alert("Item Added to Cart 💀");
     }
 
     // error fail safe
@@ -37,7 +39,9 @@ const BBigMeals = () => {
     return (
         <>
 
+            {/* Designing the items to be listed using MUI */}
             <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '80vh' }}>
+
                 {/* Title of the page */}
                 <Typography variant='h4' sx={{ color: "#213b5e", m: 2 }}>
                     Family Size Combos
@@ -48,6 +52,8 @@ const BBigMeals = () => {
                     {BigMeal.map(item => (
                         <div className="relative" key={item.id}>
                             <Card key={item.id} sx={{ minWidth: '450px', display: 'flex', m: 3, minHeight: '400px' }}>
+
+                                {/* The whole card is clickable so we handle clicks here */}
                                 <Link key={item.id} onClick={() => addToCart(item)} className='group'>
                                     <CardActionArea sx={{ maxWidth: '450px' }}>
                                         <CardMedia

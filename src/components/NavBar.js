@@ -23,11 +23,6 @@ const NavBar = () => {
                         style={{ maxWidth: '100%', maxHeight: '50px' }} />
                 </Link>
 
-                {/* Added invisible text
-                <Link to={'/'} style={{ textDecoration: 'none', color: 'black',  }}>
-                    <Typography variant='h5' color='inherit'>Go Home</Typography>
-                </Link>  */}
-
                 <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
 
                     <Link to={'/'} style={{ textDecoration: 'none', color: 'black' }}>
@@ -42,6 +37,7 @@ const NavBar = () => {
                         <Button color='inherit'>About</Button>
                     </Link>
 
+                    {/* If the user is authenticated show Logout, else show Login */}
                     {isAuthenticated ? <Button color='inherit' onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>Logout</Button>
                         : <Link to={'/login'} style={{ textDecoration: 'none', color: 'black' }}>
                             <Button color='inherit'>Login</Button>
@@ -54,6 +50,8 @@ const NavBar = () => {
                         </Badge>
                     </Link>
                 </Box>
+                
+                {/* Drawer Component for mobile devices */}
                 <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
                     <DrawerComp />
                 </Box>

@@ -1,3 +1,5 @@
+// This file contains arrays for the Categories pages. 
+
 
 import bigMealCombo from '../images/Bucket_COB.png'
 import BigBox_Zinger from '../images/BigBox_Zinger.png'

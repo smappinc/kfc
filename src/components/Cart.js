@@ -28,20 +28,29 @@ const Cart = () => {
     const removeFromCart = (item) => {
         const updatedCart = cart.filter((cartItem) => cartItem.id !== item.id);
         setCart(updatedCart);
+
+        // Show alert
+        alert("Item removed💀");
     };
 
     return (
         <>
             <div>
+
+                {/* TItle of the page */}
                 <Typography variant="h4" sx={{ color: "#213b5e", m: 2, textAlign: 'center' }}>
                     KFC Shopping Cart
                 </Typography>
+
+                {/* If the cart is empty show cart is empty, else show items added to cart */}
                 {cart.length === 0 ? (
                     <Typography variant="body1" sx={{ color: "#213b5e", textAlign: 'center' }}>
                         Your cart is empty.
                     </Typography>
                 ) : (
                     <List>
+
+                        {/* Mapping items */}
                         {cart.map((item) => (
                             <ListItem key={item.id}>
                                 <CardMedia
@@ -62,6 +71,8 @@ const Cart = () => {
                                         </Typography>
                                     }
                                 />
+
+                                {/* Buttons to increase, decrease and remove items in cart */}
                                 <Button variant='contained' style={{ backgroundColor: '#c11430' }} onClick={() => increaseQuantity(item)}>+</Button>
                                 <Button variant='outlined' onClick={() => decreaseQuantity(item)}>-</Button>
                                 <Button variant='contained' style={{ backgroundColor: '#c11430' }} onClick={() => removeFromCart(item)}>Remove</Button>
@@ -71,6 +82,7 @@ const Cart = () => {
                 )}
             </div>
 
+            {/* Adding the footer component to the page */}
             <div style={{ marginTop: '700px' }}>
                 <Footer />
             </div>

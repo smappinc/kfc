@@ -48,6 +48,7 @@ const Menu = () => {
         </Box>
       </Box>
 
+      {/* Footer Component */}
       <div style={{ marginTop: '100px' }}>
         <Footer />
       </div>

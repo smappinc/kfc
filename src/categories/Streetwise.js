@@ -7,6 +7,7 @@ import Footer from '../components/Footer';
 
 
 const Streetwise = () => {
+
   // cart context
   const { cart, setCart } = useMyContext();
 
@@ -20,12 +21,16 @@ const Streetwise = () => {
         cartItem.id === item.id ? { ...cartItem, quantity: cartItem.quantity + 1 } : cartItem
       );
       setCart(updatedCart);
+
     } else {
       // If the item is not in the cart, add it with quantity 1
       setCart([...cart, { ...item, quantity: 1 }]);
     }
-  }
 
+    // Show alert
+    alert("Item Added to Cart 💀");
+
+  }
 
   if (!StreetWise) {
     console.log("Data: ", StreetWise);
@@ -34,7 +39,9 @@ const Streetwise = () => {
 
   return (
     <>
+      {/* Designing the items to be listed using MUI */}
       <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '80vh' }}>
+
         {/* Title of the page */}
         <Typography variant='h4' sx={{ color: "#213b5e", m: 2 }}>
           Exceptional StreetWise Combos
@@ -45,6 +52,8 @@ const Streetwise = () => {
           {StreetWise.map(item => (
             <div className="relative" key={item.id}>
               <Card key={item.id} sx={{ minWidth: '450px', display: 'flex', m: 3, minHeight: '400px' }}>
+
+                {/* The whole card is clickable so we handle clicks here */}
                 <Link key={item.id} onClick={() => addToCart(item)} className='group'>
                   <CardActionArea sx={{ maxWidth: '450px' }}>
                     <CardMedia
