@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 const Help = () => {
 
   const handleVisitGlobalWebsite = () => {
-    window.location.href = 'https://www.global.kfc.com';
+    window.location.href = 'https://global.kfc.com/asset-library/';
   };
 
   return (
