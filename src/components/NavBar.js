@@ -5,10 +5,13 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import DrawerComp from './DrawerComp';
 import { Link } from 'react-router-dom';
 import { useMyContext } from './Context';
+import { useAuth0 } from '@auth0/auth0-react';
 
 const NavBar = () => {
 
-    const {cart} = useMyContext();
+    const { cart } = useMyContext();
+
+    const { isAuthenticated, logout } = useAuth0();
 
     return (
         <AppBar position='static' style={{ background: 'white', maxHeight: '70px', color: 'black' }}>
@@ -36,15 +39,17 @@ const NavBar = () => {
                     </Link>
 
                     <Link to={'/help'} style={{ textDecoration: 'none', color: 'black' }}>
-                        <Button color='inherit'>Help</Button>
+                        <Button color='inherit'>About</Button>
                     </Link>
 
-                    <Link to={'/login'} style={{ textDecoration: 'none', color: 'black' }}>
-                        <Button color='inherit'>Login</Button>
-                    </Link>
+                    {isAuthenticated ? <Button color='inherit' onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>Logout</Button>
+                        : <Link to={'/login'} style={{ textDecoration: 'none', color: 'black' }}>
+                            <Button color='inherit'>Login</Button>
+                        </Link>
+                    }
 
                     <Link to={'/cart'}>
-                        <Badge badgeContent={cart?.length||"0"} sx={{ fontSize: '1.5rem'}} color='error'>
+                        <Badge badgeContent={cart?.length || "0"} sx={{ fontSize: '1.5rem' }} color='error'>
                             <Button variant='contained' style={{ backgroundColor: '#c11430' }} startIcon={<ShoppingCartIcon />}>Cart</Button>
                         </Badge>
                     </Link>

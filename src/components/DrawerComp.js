@@ -3,11 +3,16 @@ import React, { useState } from 'react'
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
 import { useMyContext } from './Context';
+import { useAuth0 } from '@auth0/auth0-react';
 
 const DrawerComp = () => {
 
     const { cart } = useMyContext();
     const [open, setOpen] = useState(false);
+
+    // Auth
+    const { isAuthenticated, logout } = useAuth0();
+
     const handleItemClick = (path) => {
         setOpen(false); // Use history.push to navigate to the specified path
     };
@@ -38,18 +43,21 @@ const DrawerComp = () => {
                     <Link to={'/help'} style={{ textDecoration: 'none' }}>
                         <ListItemButton onClick={() => setOpen(false)}>
                             <ListItemIcon>
-                                <ListItemText>Help</ListItemText>
+                                <ListItemText>About</ListItemText>
                             </ListItemIcon>
                         </ListItemButton>
                     </Link>
 
-                    <Link to={'/login'} style={{ textDecoration: 'none' }}>
-                        <ListItemButton onClick={() => setOpen(false)}>
-                            <ListItemIcon>
-                                <ListItemText>Login</ListItemText>
-                            </ListItemIcon>
-                        </ListItemButton>
-                    </Link>
+                    {isAuthenticated ? <Button color='inherit' onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>Logout</Button>
+                        :
+                        <Link to={'/login'} style={{ textDecoration: 'none' }}>
+                            <ListItemButton onClick={() => setOpen(false)}>
+                                <ListItemIcon>
+                                    <ListItemText>Login</ListItemText>
+                                </ListItemIcon>
+                            </ListItemButton>
+                        </Link>
+                    }
 
                     <Link to={'/cart'} style={{ textDecoration: 'none', color: 'white' }}>
                         <Badge badgeContent={cart?.length || "0"} sx={{ fontSize: '1.5rem' }} color='error'>

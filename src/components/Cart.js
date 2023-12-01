@@ -51,19 +51,27 @@ const Cart = () => {
                                     image={item.image} // Add the property containing the image source
                                 />
                                 <ListItemText
-                                    primary={item.name}
-                                    secondary={`Price: UGX ${item.price * item.quantity} | Quantity: ${item.quantity}`}
+                                    primary={
+                                        <Typography variant="h6" style={{ fontSize: '1.5rem', marginLeft: '10px' }}>
+                                            {item.name}
+                                        </Typography>
+                                    }
+                                    secondary={
+                                        <Typography variant="body2" style={{ fontSize: '1rem', marginLeft: '10px' }}>
+                                            Price: UGX {item.price * item.quantity} | Quantity: {item.quantity}
+                                        </Typography>
+                                    }
                                 />
-                                <Button variant='contained' onClick={() => increaseQuantity(item)}>+</Button>
+                                <Button variant='contained' style={{ backgroundColor: '#c11430' }} onClick={() => increaseQuantity(item)}>+</Button>
                                 <Button variant='outlined' onClick={() => decreaseQuantity(item)}>-</Button>
-                                <Button variant='contained' onClick={() => removeFromCart(item)}>Remove</Button>
+                                <Button variant='contained' style={{ backgroundColor: '#c11430' }} onClick={() => removeFromCart(item)}>Remove</Button>
                             </ListItem>
                         ))}
                     </List>
                 )}
             </div>
 
-            <div style={{ marginTop: '700px'}}>
+            <div style={{ marginTop: '700px' }}>
                 <Footer />
             </div>
         </>

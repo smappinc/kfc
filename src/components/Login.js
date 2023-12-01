@@ -1,13 +1,12 @@
 import GoogleImg from '../assets/images/google.png'
 import React from 'react'
 import { Link } from 'react-router-dom';
-import { useGoogleLogin } from '@react-oauth/google';
+import { useAuth0 } from "@auth0/auth0-react";
+
 
 const Login = () => {
 
-  const login = useGoogleLogin({
-    onSuccess: (tokenResponse) => console.log(tokenResponse),
-  });
+  const { loginWithRedirect } = useAuth0();
 
   return (
 
@@ -20,7 +19,7 @@ const Login = () => {
         <div className="p-10 flex flex-col gap-8 md:w-[100vh]">
           <h1 className="font-bold text-xl xl:text-3xl text-[#213b5e]">Welcome</h1>
           <p>Log into your account or create a new one using social buttons</p>
-          <button onClick={()=> login()} className="flex gap-4 p-4 ring-1 ring-[#213b5e] rounded-md hover:bg-[#c11430]">
+          <button onClick={() => loginWithRedirect()} className="flex gap-4 p-4 ring-1 ring-[#213b5e] rounded-md hover:bg-[#c11430]">
             <img
               src={GoogleImg}
               alt=""

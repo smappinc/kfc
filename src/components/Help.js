@@ -1,8 +1,13 @@
 import React from 'react'
-import GoogleImg from '../assets/images/google.png'
+import GoogleImg from '../assets/images/KFC_ColonelIcon_RGB_Black.jpg'
 import { Link } from 'react-router-dom'
 
 const Help = () => {
+
+  const handleVisitGlobalWebsite = () => {
+    window.location.href = 'https://www.global.kfc.com';
+  };
+
   return (
     <div className="p-4 h-[calc(100vh-6rem)] md:h-[calc(100vh-9rem)] flex items-center justify-center">
 
@@ -11,9 +16,9 @@ const Help = () => {
 
         {/* FORM CONTAINER */}
         <div className="p-10 flex flex-col gap-8 md:w-[100vh]">
-          <h1 className="font-bold text-xl xl:text-3xl text-[#213b5e]">Welcome</h1>
-          <p>Log into your account or create a new one using social buttons</p>
-          <button className="flex gap-4 p-4 ring-1 ring-[#213b5e] rounded-md hover:bg-[#c11430]">
+          <h1 className="font-bold text-xl xl:text-3xl text-[#213b5e]">HISTORY OF THE BRAND AND COLONEL SANDERS</h1>
+          <p>KFC, a subsidiary of Yum! Brands, Inc. (NYSE: YUM.), is a global chicken restaurant brand with a rich, decades-long history of success and innovation. It all started with one cook, Colonel Harland Sanders, who created a finger lickin’ good recipe more than 80 years ago, a list of secret herbs and spices scratched out on the back of the door to his kitchen. Today we still follow his formula for success, with real cooks breading and freshly preparing our delicious chicken by hand in more than 26,000 restaurants in over 150 countries and territories around the world.</p>
+          <button className="flex gap-4 p-4 ring-1 ring-[#213b5e] rounded-md hover:bg-[#c11430]" onClick={handleVisitGlobalWebsite}>
             <img
               src={GoogleImg}
               alt=""
@@ -21,11 +26,10 @@ const Help = () => {
               height={20}
               className="object-contain"
             />
-            <span>Sign in with Google</span>
+            <span>Visit KFC global Website</span>
+
           </button>
-          <p className="text-sm">
-            Have a problem?<Link className="underline" to="/"> Contact us</Link>
-          </p>
+          
         </div>
       </div>
     </div>
